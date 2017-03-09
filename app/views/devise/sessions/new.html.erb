@@ -1,14 +1,27 @@
-<div class="row">
-  <div class="col m6 offset-m3 center">
+<div class="row slide awe-parallax-regist bg-login-content">
+	<div class="col s12">
+		<div class="container">
+      <div class="slide-cn" id="slide-home">
+          <!-- SLIDE ITEM -->
+          <div class="slide-item">
+              <div class="item-inner">
+                <div class="col m7">
+                  <div class="text">
+                    <div class="col-xs-12 col-lg-6 loginWrapMsg">
+                      <h2>さあ、今日は何を覚える？</h2>
+                      <h3>好きな時間に、好きな動画を、好きなだけ。</h3>
+                    </div>
 
-    <h5>Log In</h5>
+                  </div>
+                </div>
     
-    <%= link_to "Log in with Google", user_omniauth_authorize_path(:google_oauth2), class: "btn red darken-1" %>
-    <br/><br/>
-    <%= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn blue darken-4" %>
-     <br/><br/>
-    <%= link_to "Log in with Github", user_omniauth_authorize_path(:github), class: "btn grey darken-2" %>
+      <div class="col m5">
+　　　　    
     
+                  <h5>SNS ログイン</h5>
+    <%= link_to "Facebookログイン", user_omniauth_authorize_path(:facebook), class: "btn blue darken-4" %>
+    <br><br>
+      <h5>ログイン</h5>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
            <%= render partial: "shared/devisemes" %>
 
@@ -19,10 +32,22 @@
       <div class="input-field">
         <%= f.password_field :password, :id => "email", :class => "validate", :placeholder => "Password", autocomplete: "off" %>
       </div>
-
-      <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
-      <%= link_to "Forgot password", new_user_password_path, :class => "btn waves-effect waves-light" %>
+      <br>
+      
+      <button class="btn waves-effect waves-light" type="submit" name="action">ログイン</button>
+      <%= link_to "パスワードを忘れた？", new_user_password_path, :class => "btn waves-effect waves-light" %>
     <% end %>
+    <br>
 
-  </div>
+     <%= link_to "会員登録をしてない方はこちらから", new_user_registration_path, :class => "white-text z-depth-5" %>
+
+            
+                       
+          </div>
+          <!-- SLIDE ITEM1 -->
+      </div>
+		</div>
+	</div>
+</div>
+</div>
 </div>

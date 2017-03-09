@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/privacy'
+
+  get 'static_pages/term'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
@@ -9,7 +13,7 @@ Rails.application.routes.draw do
   get '/myprojects' => 'project#list'
   post '/free' => 'charge#free'
 
-  root 'project#index'
+  root 'pages#about'
   
   resources :project do
   resources :task, only: [:show]

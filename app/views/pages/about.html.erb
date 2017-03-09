@@ -1,27 +1,111 @@
-<h3>About Me</h3>
+<div class="row slide intro">
+	<div class="col s12">
+		<div class="container">
+      <div class="slide-cn" id="slide-home">
+          <!-- SLIDE ITEM -->
+          <div class="slide-item">
+              <div class="item-inner">
+                <div class="col m7">
+                  <div class="text">
+                      <h2>実在するサービスをモデルに<br>プログラミング学習を｡</h2>
+                      <p>Airbnb, TaskRabbit, Tinder・・<br>世界の魅力的なサービスをあなたの手で。</p>
+                      <br><br>
+											<div class="group">
+                          <%= link_to "会員登録（無料）をする", new_user_registration_path, class: "btn-large blue lighten-1 cloud_get_started waves-effect waves-light white-text" %>
+                      </div>
+                  </div>
+                </div>
+                <div class="col m5">
+                  <div class="img">
+                    <!--<img src="images/homeslider/img-thumb.png" alt="">-->
+                    <%= image_tag('slide1thum.png') %>
+                  </div>
+                </div>
+              </div>
 
-<div class="card z-depth-3">
-  <div class="card-content white-text">
-  	<div class="row">
-	    <div class="col m6">
-	      <a class="twitter-timeline" href="https://twitter.com/Code4Startup" data-widget-id="584941191998877696">Tweets by @Code4Startup</a>
-
-	      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	    </div>
-	    <div class="col m6">
-	      <div class="card-panel grey lighten-5 z-depth-1">
-	          <div class="row valign-wrapper">
-	            <div class="col s3">
-	              <%= image_tag "avatar.jpg", class: "circle responsive-img" %>
-	            </div>
-	            <div class="col s9">
-	              <span class="black-text">
-	                I don't know what to say. Let the world tell you more... :)
-	              </span>
-	            </div>
-	          </div>
-	        </div>
-	    </div>   
-    </div> 
-  </div>
+          </div>
+          <!-- SLIDE ITEM1 -->
+      </div>
+		</div>
+	</div>
 </div>
+
+
+<section id="mc-section-1" class="mc-section-1 section">
+		<div class="container">
+				<div class="row">
+
+						<div class="col m12">
+								<div class="row">
+										<div class="col s4">
+												<div class="featured-item">
+														<i class="icon icon-featured-1"></i>
+														<h4 class="title-box text-uppercase">勉強効率をアップ！</h4>
+														<p>簡単なアプリではなく、実際に存在する人気のあるアプリやサービスをモデルに実践的なサービスを作ることができます。実際にプログラマが作ってみたいアプリやサイトに近いものが作れるため、ワクワクしてプログラミングの勉強ができます！</p>
+												</div>
+										</div>
+
+										<div class="col s4">
+												<div class="featured-item">
+														<i class="icon icon-featured-2"></i>
+														<h4 class="title-box text-uppercase">どんな人に役立つの？</h4>
+														<p>学生、初心者～上級者プログラマー、スタートアップ起業家、流行の言語を使ってみたい人・・・など。さらに、勉強できる言語は、Ruby on Rails, Swift, AngularJS, NodeJS, Ionic, HTML5, CSS3など、随時や増えます。</p>
+												</div>
+										</div>
+
+										<div class="col s4">
+												<div class="featured-item">
+														<i class="icon icon-featured-3"></i>
+														<h4 class="title-box text-uppercase">動画による解説</h4>
+														<p>プログラミングを動画で解説します。動画なので、自分のペースで繰り返し勉強することができます。また、なぜ今そのコードを書いているのか？などの解説をリアルタイムで聞くことで、より深くプログラムに対する理解が深まります。</p>
+												</div>
+										</div>
+
+								</div>
+						</div>
+
+				</div>
+		</div>
+</section>
+<!-- END / SECTION 1 -->
+
+<!-- aboutC4S -->
+<section id="idxSecAboutC4S" class="mc-section-2 section">
+ <div class="container-fluid">
+	 <div class="row">
+
+		 <div class="col s6 aboutC4SLeft">
+			 <div class="row">
+				 <div class="ct col-xs-10 col-xs-push-2">
+						 <h2 class="big">Code4Startupってなに？</h2>
+						 <p class="mc-text">
+							 Code4Startup（コード・フォー・スタートアップ）は、<br>オーストラリア発のプログラム学習用webサービスです。<br>
+							 Code4Startup-JPでは、Code4Startupと提携し、<br>
+							 動画教材の字幕版/吹き替え版の提供を行うほか、<br>
+							 日本向けサービスの独自コンテンツを動画教材として配信します。</p>
+						 </p>
+						 <a href="https://code4startup.com" class="mc-btn btn-style-3" target="_blank">ORIGINAL : CODE4STARTUP(ENG)</a>
+				 </div>
+			 </div>
+		 </div>
+
+	 <div class="col s6 aboutC4SRight">
+		 <div class="row">
+			 <div class="ct col-xs-10 col-xs-offset-1">
+				 <br>
+				 <div class="image">
+						 <%= image_tag('image.png') %>
+				 </div>
+			 </div>
+		 </div>
+	 </div>
+
+	 </div>
+ </div>
+</section>
+<!-- /aboutC4S -->
+
+<section class="center">
+  <%= link_to "プロジェクト一覧を見る", project_index_path, class: "btn-large blue lighten-1 cloud_get_started waves-effect waves-light white-text" %>
+  <br><br>
+</section>
