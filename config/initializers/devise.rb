@@ -1,6 +1,6 @@
 Devise.setup do |config|
   config.secret_key = '8c461916f1c934c4ffce565f44bb177114b0b35ed151401e97d613fde316b1cbea8a92be992f8fd8e2e70027029409618c42487fccc5f14b630a7b6c0e014efe'
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'noreply@librex.co.jp'
 
   require 'devise/orm/active_record'
 
@@ -15,13 +15,7 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
 
-  require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], {access_type: "offline", approval_prompt: ""}
-
   require 'omniauth-facebook'
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
-
-  require 'omniauth-github'
-  config.omniauth :github, ENV['GITHUB_APP_ID'], ENV['GITHUB_APP_SECRET'], scope: "user:email"
   
 end
