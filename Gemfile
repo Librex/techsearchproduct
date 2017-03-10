@@ -42,3 +42,4 @@ group :development, :test do
   gem 'letter_opener_web'
 end
 
+gem 'rails_12factor', group: :production

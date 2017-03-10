@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  config.secret_key = '8c461916f1c934c4ffce565f44bb177114b0b35ed151401e97d613fde316b1cbea8a92be992f8fd8e2e70027029409618c42487fccc5f14b630a7b6c0e014efe'
+  config.secret_key = 'ccc7be244dd6a2f18363571f0629bfa54fefec43d33a4e89598cbe64c093c56ba6e641353a130a801bc768a4861237efd9c583656e90c950970b2709cd2df98a'
   config.mailer_sender = 'noreply@librex.co.jp'
 
   require 'devise/orm/active_record'
