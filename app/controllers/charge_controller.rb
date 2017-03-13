@@ -1,35 +1,36 @@
 class ChargeController < ApplicationController
-  before_action :authenticate_user!
+	
+	before_action :authenticate_user!
 
-  def free
+	def free
+		project = Project.find(params[:project_id])
+		current_user.subscriptions.create(project: project)
+
+		redirect_to project
+	end
+
+  def pay
     project = Project.find(params[:project_id])
-    current_user.subscriptions.create(project: project)
+    
+  customer = Stripe::Customer.create(
+    :email => params[:stripeEmail],
+    :source  => params[:stripeToken]
+  )
 
+    charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => project.price,
+    :description => project.name,
+    :currency    => 'jpy'
+  )
+  
+  if charge
+    current_user.subscriptions.create(project: project)
     redirect_to project
   end
 
-  def create
-    project = Project.find(params[:project_id])
-
-    customer = Stripe::Customer.create(
-      email: params[:stripeEmail],
-      source: params[:stripeToken]
-    )
-
-    charge = Stripe::Charge.create(
-      customer: customer.id,
-      amount: project.price,
-      description: project.name,
-      currency: 'jpy'
-    )
-
-    if charge
-      current_user.subscriptions.create(project: project)
-      redirect_to new_charge_path
-    end
-
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to project
   end
 end
