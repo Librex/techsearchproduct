@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :title
       t.text :note
       t.string :video
-      t.boolean :header, :null => false, :default => false
+      t.boolean :header, null: false, default: false
       t.string :tag
       t.references :project, index: true, foreign_key: true
 

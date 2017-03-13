@@ -1,31 +1,31 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
-              :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
-              
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile' },
+                     controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+
   get 'pages/about'
   get '/myprojects' => 'project#list'
+
   post '/free' => 'charge#free'
-  post '/pay' => 'charge#pay'
+  resources :charges
+
   get 'static_pages/privacy'
   get 'static_pages/term'
-  
+
   root 'pages#about'
-  
+
   resources :project do
-  resources :task, only: [:show]
+    resources :task, only: [:show]
   end
 
   resources :project do
     resources :reviews, only: [:create, :destroy]
   end
-  
+
   resources :blogs
-  
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,32 +1,32 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.2'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'pg'
+gem 'rails', '4.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 
-gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'turbolinks'
 
-gem 'materialize-sass'
 gem 'devise', '~> 3.5', '>= 3.5.2'
+gem 'materialize-sass'
 gem 'toastr-rails'
 
 gem 'omniauth'
-gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 
-gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 gem 'coderay', '~> 1.1.0'
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 
 gem 'friendly_id', '~> 5.1'
 
@@ -38,10 +38,11 @@ gem 'stripe'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
-  
+  gem 'web-console', '~> 2.0'
+
   gem 'letter_opener_web'
+  gem 'rubocop', require: false
 end
 
 gem 'rails_12factor', group: :production

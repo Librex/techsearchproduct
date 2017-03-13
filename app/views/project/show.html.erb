@@ -34,7 +34,7 @@
 			  <% end %>
 			<% else %>
 						
-			<%= form_tag pay_path, id:'chargeForm' do %>
+			<%= form_tag charges_path, id:'chargeForm' do %>
 			  <script src="https://checkout.stripe.com/checkout.js"></script>
 			  <%= hidden_field_tag 'stripeToken' %>
 			  <%= hidden_field_tag 'stripeEmail' %>
@@ -44,7 +44,7 @@
 
               <script>
                 var handler = StripeCheckout.configure({
-                  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                  key: ENV['PUBLISHABLE_KEY'],
                   locale: 'auto',
                   token: function(token, arg) {
                     $('#stripeToken').val(token.id);
@@ -154,7 +154,7 @@
 
 <script>
 	$('#average_rating').raty({
-		path: '/assets',
+		path: '/images',
 		readOnly: true,
 		score: <%= @project.average_rating %>
 	});
