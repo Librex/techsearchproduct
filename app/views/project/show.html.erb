@@ -34,7 +34,7 @@
 			  <% end %>
 			<% else %>
 						
-			　<%= form_tag pay_path, id:'chargeForm' do %>
+			　<%= form_tag charge_path, id:'chargeForm' do %>
 			    <script src="https://checkout.stripe.com/checkout.js"></script>
 		      <%= hidden_field_tag 'stripeToken' %>
 			    <%= hidden_field_tag 'stripeEmail' %>

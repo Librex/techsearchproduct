@@ -9,7 +9,7 @@ class ChargeController < ApplicationController
 		redirect_to project
 	end
 
-  def pay
+  def create
     project = Project.find(params[:project_id])
     
   customer = Stripe::Customer.create(
