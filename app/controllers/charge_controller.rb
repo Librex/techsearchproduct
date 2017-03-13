@@ -29,8 +29,8 @@ class ChargeController < ApplicationController
       redirect_to project
     end
     
-    Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to project
-    end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to project
+  end
 end
