@@ -1,4 +1,4 @@
-class ChargeController < ApplicationController
+class ChargesController < ApplicationController
 	
 	before_action :authenticate_user!
 
@@ -12,11 +12,13 @@ class ChargeController < ApplicationController
   def create
     project = Project.find(params[:project_id])
     
+  # Create the customer in Stripe
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]
   )
-
+  
+  # Create the charge using the customer data returned by Stripe API
     charge = Stripe::Charge.create(
     :customer    => customer.id,
     :amount      => project.price,

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get 'pages/about'
   get '/myprojects' => 'project#list'
 
-  post '/free' => 'charge#free'
-  resources :charges
+  post '/free' => 'charges#free'
+  post '/create' => 'charges#create'
+  # resources :charges
 
   get 'static_pages/privacy'
   get 'static_pages/term'

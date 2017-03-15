@@ -7,6 +7,7 @@ class ProjectController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    session[:project_id] = @project.id
     @tasks = @project.tasks.order(:tag)
 
     @joined = false
