@@ -10,13 +10,13 @@
 				<% end %>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><%= link_to "プロジェクト一覧", project_index_path %></li>
+          <li><%= link_to "コース一覧", project_index_path %></li>
           <% if(!user_signed_in?) %>
             <li><%= link_to "会員登録", new_user_registration_path %></li>
             <li><%= link_to "ログイン", new_user_session_path %></li>
           <% else %>
-            <li><%= link_to "プロフィール", edit_user_registration_path %></li>
-            <li><%= link_to "受講中のプロジェクト", myprojects_path %></li>
+            <li><%= link_to "アカウント情報", edit_user_registration_path %></li>
+            <li><%= link_to "受講中のコース", myprojects_path %></li>
             <li class="divider"></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <% end %>

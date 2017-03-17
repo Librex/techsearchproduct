@@ -1,123 +1,108 @@
-<% content_for :head do %>
-  <title><%= @project.name %> | Code4Pro</title>
-	
-  <!-- Twitter Card data -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@Code4Startup-Japan">
-  <meta name="twitter:creator" content="@Code4Startup-Japan">
-  <meta name="twitter:title" content="<%= @project.name %>">
-  <meta name="twitter:description" content="<%= @project.content %>">
-  <meta name="twitter:image:src" content="<%= image_url @project.image %>">
+<section class="sub-banner sub-banner-course">
+  <div class="awe-static bg-sub-banner-course"></div>
+  <div class="container">
+    <div class="sub-banner-content">
+      <h2 class="text-center">コース：<%= @project.shortname %></h2>
+    </div>
+  </div>
+</section>
 
-  <!-- Open Graph data -->
-  <meta property="og:site_name" content="Code4Startup-Japan">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="<%= @project.name %>">
-  <meta property="og:description" content="<%= @project.content %>">
-  <meta property="og:image" content="<%= @project.image %>">
-<% end %>
-
-<div class="row">
+<div class="course-top row">
+	<div class="container">
   <div class="col m4">
-    <div class="card z-depth-2">
-			
-<% if !@joined %>	
-  <div class="center">
-    <h1><%= @project.price == 0? "Free" : "$#{@project.price}" %></h1>
-	</div>
+    <div class="card video-course-intro z-depth-2">
+    	<div class="card-image">
+				<%= image_tag @project.image %>
+			</div>
+
+<% if !@joined %>
+  <!-- 受講していない生徒用 -->
+
 	<div class="card-action center">
 	  <% if user_signed_in? %>
+    <!-- 受講していない＋ログイン済み -->
 		  <% if @project.price == 0 %>
+      <!-- 無料コース　～　受講していない＋ログイン済み -->
 		    <%= form_tag free_path do %>
 			    <%= hidden_field_tag 'project_id', @project.id %>
-			    <button type="submit" class="btn pink darken-2">受講する</button>
+			    <h3 class="price">Free</h3>
+			    <button type="submit" class="btn light-blue">受講する</button>
 			  <% end %>
+      <!-- 無料コース　～　受講していない＋ログイン済み ここまで -->
 			<% else %>
-						
-			　<%= form_tag create_path, id:'chargeForm' do %>
-			    <!-- <script src="https://checkout.stripe.com/checkout.js"></script> -->
+      <!-- 有料コース　～　受講していない＋ログイン済み -->
+        <%= form_tag create_path, id:'chargeForm' do %>
 		      <%= hidden_field_tag 'stripeToken' %>
 			    <%= hidden_field_tag 'stripeEmail' %>
 			    <%= hidden_field_tag 'project_id', @project.id %>
+			    <h3 class="price">￥<%= @project.price %></h3>
+          <button id="customButton" class="btn light-blue">決済ページへ</button><br/>
 
-          <button id="customButton" class="btn pink darken-2">購入する</button><br/>
+          <script>
+            var handler = StripeCheckout.configure({
+              key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+              token: function(token, arg) {
+                $('#stripeToken').val(token.id);
+                $('#stripeEmail').val(token.email);
+                $('#chargeForm').submit();
+              }
+            });
+            document.getElementById('customButton').addEventListener('click', function(e) {
+              handler.open({
+                name: 'LibreCoding',
+                description: '<%= @project.name %>',
+                currency: 'jpy',
+                amount: '<%= @project.price %>',
+                email: '<%= current_user.email %>'
+              });
+              e.preventDefault();
+            });
+          </script>
 
-              <script>
-                var handler = StripeCheckout.configure({
-                  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-                  token: function(token, arg) {
-                    $('#stripeToken').val(token.id);
-                    $('#stripeEmail').val(token.email);
-                    $('#chargeForm').submit();
-                  }
-                });
-
-                document.getElementById('customButton').addEventListener('click', function(e) {
-                  handler.open({
-                    name: 'LibreCoding',
-                    description: '<%= @project.name %>',
-                    currency: 'jpy',
-                    amount: '<%= @project.price %>',
-                    email: '<%= current_user.email %>'
-                  });
-                  e.preventDefault();
-                });
-
-              </script>
-
-			<% end %>			
+			  <% end %>
 			<% end %>
+      <!-- 有料コース　～　受講していない＋ログイン済み 　ここまで -->
+		<% else %>
+    <!-- ログインしていない -->
 
-					<% else %>
-						<%= link_to new_user_session_path do %>	
-							<button type="submit" class="btn pink darken-2">Take this Project</button>
-						<% end %>
-					<% end %>
-				</div>
-			
-			<% else %>
-
-				<div class="card-content center">
-					<%= image_tag avatar_url(current_user), class: "circle responsive-img avatar-medium" %><br/>
-					<h5><%= current_user.name %></h5>
-				</div>
-				<div class="card-action center">
-					<% @users.each do |u| %>
-						<span class="valign-wrapper">
-							<%= image_tag avatar_url(u), class: "circle responsive-img avatar-small" %>&nbsp;
-							<%= u.name %>	
-						</span><br/>
-					<% end %>
-				</div>
-
+    <h3 class="price"><%= @project.price == 0? "Free" : "￥#{@project.price}" %></h3>
+			<%= link_to new_user_session_path do %>
+				<button type="submit" class="btn light-blue">ログインページへ</button>
 			<% end %>
-			
-		</div>
+		<% end %>
 	</div>
 
+<!-- 受講している生徒用 -->
+<% else %>
+	<div class="card-action center">
+    <a href="#videos" class="btn light-blue">カリキュラムを見る</a><br/>
+	</div>
+<% end %>
+		</div>
+	</div>
+<!-- 左サイドバー　ここまで -->
+
 	<div class="col m8">
-		<div class="card z-depth-2">
-			<div class="card-image">
-				<%= image_tag @project.image %>
-			</div>
-			
+		<div class="card2">
+
+
 			<div class="row">
 		    <div class="col s12">
 		      <ul class="tabs">
-		        <li class="tab col s3"><a class="active" href="#about">About</a></li>
-		        <li class="tab col s3"><a href="#videos">Videos</a></li>
-		        <li class="tab col s3"><a href="#discussions">Discussions</a></li>
+		        <li class="tab col s6"><a class="active" href="#about">コース概要</a></li>
+		        <li class="tab col s6"><a href="#videos">カリキュラム一覧</a></li>
 		      </ul>
 		    </div>
 		    <div id="about" class="col s12">
 		    	<div class="card-content grey-text text-darken-4">
-						<h5><%= @project.name %></h5>
+		    		<div><%= markdown(@project.content) %></div>
+		    		<br>
 						<span id="average_rating"></span>
-						<p> <%= @reviews.count %> <%= @reviews.count > 1? "Reviews" : "Review" %></p>
+						<p> <%= @reviews.count %> <%= @reviews.count > 1? "Reviews" : "件の評価" %></p>
 						<hr>
-						<%= @project.content %>
+						
 
-						<h4>Reviews</h4>
+						<h4>評価</h4>
 						<div><%= render 'reviews/form' if @joined && !@hasReview %></div>
 						<div><%= render 'reviews/index' %></div>
 
@@ -125,10 +110,10 @@
 		    </div>
 
 		    <div id="videos" class="col s10 offset-s1">
-		    	<div class="collection" data-no-turbolink>
+		    	<div class="collection section-outline" data-no-turbolink>
 						<% @tasks.each do |task| %>
 							<% if task.header %>
-								<div class="collection-item active">
+								<div class="tit-section xsm">
 									<i class="mdi-social-school"> <%= task.title %></i>
 								</div>
 							<% else %>
@@ -139,15 +124,11 @@
 						<% end %>
 					</div>
 		    </div>
-
-		    <div id="discussions" class="col s12">
-		    	<!-- Discussion would be here -->
-		    </div>
 		  </div>
 
 		</div>
 	</div>
-
+</div>
 </div>
 
 <script>

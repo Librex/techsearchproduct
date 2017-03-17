@@ -1,34 +1,48 @@
-<h1>This is My Projects page</h1>
+<section class="sub-banner sub-banner-course">
+  <div class="awe-static bg-sub-banner-course"></div>
+  <div class="container">
+    <div class="sub-banner-content">
+      <h2 class="text-center">受講しているコース一覧</h2>
+    </div>
+  </div>
+</section>
 
-<div class="row" data-no-turbolink>
-<br/>
+<section id="categories-content" class="categories-content">
+  <div class="container">
+    <div class="row" data-no-turbolink><br/>
 
-	<% if @projects.count > 0 %>
+      <% if @projects.count > 0 %>
+        <% @projects.each do |project| %>
+          <%= link_to project do %>
+	      	  <div class="col s12 m6 l3">
+      				<div class="card small mc-item">
+	      				<div class="card-image">
+		      				<%= image_tag project.image %>
+		      			</div>
 
-		<% @projects.each do |project| %>
-			<%= link_to project do %>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						
-						<div class="card-image">
-							<%= image_tag project.image %>
-						</div>
-						
-						<div class="card-content" style="height: 6em">
-							<span class="card-title grey-text text-darken-4">
-								<%= project.shortname %>
-							</span>
-						</div>
+		      			<div class="card-content" style="height: 6em">
+			      			<span class="card-title grey-text text-darken-1">
+		      				  <h4><%= project.shortname %></h4>
+                    <div class="name-author text-bottom">
+                      <a>By LibreCoding</a>
+                    </div>
+	      					</span>
+		      				<span class="card-action grey-text text-darken-1 text-right">
+		      				  <i class="small material-icons">shopping_cart</i>
+			      			  <%= project.price == 0? "Free" : "￥#{project.price}" %>
+			      			</span>
+		      			</div>
+		      		</div>
+	      		</div>
+	        <% end %>
+	      <% end %>
+      <% else %>
+	      <div class="center">
+		      <h5>Currently you're not in any projects!</h5>
+	      	<%= link_to "Show me all Projects", root_path, class: "btn btn-primary" %>
+      	</div>
+      <% end %>
 
-					</div>
-				</div>
-			<% end %>
-		<% end %>
-	<% else %>
-		<div class="center">
-			<h5>Currently you're not in any projects!</h5>
-			<%= link_to "Show me all Projects", root_path, class: "btn btn-primary" %>
-		</div>
-	<% end %>
-
-</div>
+    </div>
+  </div>
+</section>

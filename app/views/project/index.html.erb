@@ -1,18 +1,38 @@
-<div class="row" data-no-turbolink>
-<br/>
+<section class="sub-banner sub-banner-course">
+  <div class="awe-static bg-sub-banner-course"></div>
+  <div class="container">
+  <div class="sub-banner-content">
+    <h2 class="text-center">コース一覧</h2>
+  </div>
+  </div>
+</section>
 
+
+<section id="categories-content" class="categories-content">
+        <div class="container">
+
+<div class="row" data-no-turbolink>
+    <!-- CATEGORIES CONTENT -->
 	<% @projects.each do |project| %>
 		<%= link_to project do %>
-			<div class="col s12 m6 l4">
-				<div class="card">
+			<div class="col s12 m6 l3">
+				<div class="card small mc-item">
 					
 					<div class="card-image">
 						<%= image_tag project.image %>
 					</div>
 					
 					<div class="card-content" style="height: 6em">
-						<span class="card-title grey-text text-darken-4">
-							<%= project.shortname %>
+						<span class="card-title grey-text text-darken-1">
+						<h4><%= project.shortname %></h4>
+
+							 <div class="name-author text-bottom">
+                                     <a>By LibreCoding</a>
+                            </div>
+						</span>
+						<span class="card-action grey-text text-darken-1 text-right">
+						<i class="small material-icons">shopping_cart</i>
+						<%= project.price == 0? "Free" : "￥#{project.price}" %>
 						</span>
 					</div>
 
@@ -20,5 +40,9 @@
 			</div>
 		<% end %>
 	<% end %>
+</div>
+
+
 
 </div>
+</section>

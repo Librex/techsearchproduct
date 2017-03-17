@@ -1,5 +1,29 @@
-<div class="row">
-  <div class="col m6 offset-m3 center">
+<section class="sub-banner sub-banner-course">
+  <div class="awe-static edit-account"></div>
+  <div class="container">
+  <div class="sub-banner-content">
+    <h2 class="text-center">アカウント情報を修正する</h2>
+  </div>
+  </div>
+</section>
+
+
+    <!-- PROFILE -->
+    
+    <section class="profile">
+        <div class="container">
+            
+            <h3 class="md">Profile</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="avatar-acount">
+                        <div class="info-acount">
+                            <h3 class="md black-text">Welcom <%= current_user.name %>　さん</h3>
+                            <p>この画面では、登録されているアカウント情報を変更できます。 </p>
+                        </div>
+                        <div class="divider"></div>
+                        
+                        
 
     <h5>Edit <%= resource_name.to_s.humanize %></h5>
 
@@ -7,11 +31,11 @@
      <%= render partial: "shared/devisemes" %>
 
       <div class="input-field">
-        <%= f.text_field :name, :id => "name", :class => "validate", :placeholder => "Name", autofocus: true %>
+        <%= f.text_field :name, :id => "name", :class => "validate", :placeholder => "名前", autofocus: true %>
       </div>
 
       <div class="input-field">
-        <%= f.email_field :email, :id => "email", :placeholder => "Email", :class => "validate" %>
+        <%= f.email_field :email, :id => "email", :placeholder => "メールアドレス", :class => "validate" %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -19,22 +43,36 @@
       <% end %>
 
       <div class="input-field">
-        <%= f.password_field :password, :id => "password", :placeholder => "New Password (leave blank if you don't want to change it)", :class => "validate", autocomplete: "off" %>
+        <%= f.password_field :password, :id => "password", :placeholder => "新しいパスワードに変更（変更しない場合は、空白)できます。", :class => "validate", autocomplete: "off" %>
       </div>
 
       <div class="input-field">
-        <%= f.password_field :password_confirmation, :id => "password_confirmation", :placeholder => "Confirm Password", :class => "validate", autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, :id => "password_confirmation", :placeholder => "新しいパスワードを再入力してください", :class => "validate", autocomplete: "off" %>
       </div>
 
       <div class="input-field">
-        <%= f.password_field :current_password, :id => "current_password", :placeholder => "Type current password to confirm your change", :class => "validate", autocomplete: "off" %>
+        <%= f.password_field :current_password, :id => "current_password", :placeholder => "変更した場合は、現在のパスワードを入力してください。", :class => "validate", autocomplete: "off" %>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit" name="action">Update</button>
       <%= link_to "Back", :back, :class => "btn waves-effect waves-light" %>
     <% end %>
 
-  </div>
-</div>
+                        
+                        
+                    </div>    
+                </div>
+
+            </div>    
+        </div>
+    </section>
+
+
+    <!-- END / PROFILE -->
+    
+    
+
+
+
 
 
