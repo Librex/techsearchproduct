@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
           image: data.image,
           password: Devise.friendly_token[0, 20]
         )
+        user.skip_confirmation!
+        user.save(validate: false)
       end
     end
   end

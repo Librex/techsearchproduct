@@ -1,3 +1,23 @@
+<% content_for :head do %>
+	<title><%= @project.name %> | BProCoder</title>
+	
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@BProCoder">
+	<meta name="twitter:creator" content="@BProCoder">
+	<meta name="twitter:title" content="<%= @project.name %>">
+	<meta name="twitter:description" content="<%= @project.content %>">
+	<meta name="twitter:image:src" content="<%= image_url @project.image %>">
+
+	<!-- Open Graph data -->
+	<meta property="og:site_name" content="BProCoder">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="<%= @project.name %>">
+	<meta property="og:description" content="<%= @project.content %>">
+	<meta property="og:image" content="<%= @project.image %>">
+<% end %>
+
+
 <section class="sub-banner sub-banner-course">
   <div class="awe-static bg-sub-banner-course"></div>
   <div class="container">
@@ -130,6 +150,7 @@
 	</div>
 </div>
 </div>
+
 
 <script>
 	$('#average_rating').raty({

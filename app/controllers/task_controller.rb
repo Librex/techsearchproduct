@@ -18,7 +18,7 @@ class TaskController < ApplicationController
       @next_task = @task.next
       @prev_task = @task.prev
     else
-      flash[:notice] = 'No permission to this!'
+      flash[:notice] = 'このコースを受講してください!'
       redirect_to project
      end
   end

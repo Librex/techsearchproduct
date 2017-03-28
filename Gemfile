@@ -36,6 +36,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 gem 'stripe'
 
+gem 'aws-sdk', '~> 2.3'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
@@ -43,6 +45,7 @@ group :development, :test do
 
   gem 'letter_opener_web'
   gem 'rubocop', require: false
+  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production

@@ -9,7 +9,7 @@
                   <div class="text">
                     <div class="col-xs-12 col-lg-6 loginWrapMsg">
                       <h2>さあ、今日は何を覚える？</h2>
-                      <h3>好きな時間に、好きな動画を、好きなだけ。</h3>
+                      <h3>好きな時間に、好きなだけ。</h3>
                     </div>
 
                   </div>
@@ -19,11 +19,6 @@
 　　　
 　　　
 　　　  <div id="wrapper">
-	<h5 class="black-text">SNS ログイン</h5> 
-    	<div class="lock"></div>
-	        <div class="clr"></div>
-                    <%= link_to "Facebookログイン", user_omniauth_authorize_path(:facebook), class: "btn blue darken-4" %>
-                    <div class="clr"><hr /></div>
                     <h5 class="black-text">ログイン</h5>
                     
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

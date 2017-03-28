@@ -12,7 +12,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><%= link_to "コース一覧", project_index_path %></li>
           <% if(!user_signed_in?) %>
-            <li><%= link_to "会員登録", new_user_registration_path %></li>
+            <li><%= link_to "会員登録(無料)", new_user_registration_path %></li>
             <li><%= link_to "ログイン", new_user_session_path %></li>
           <% else %>
             <li><%= link_to "アカウント情報", edit_user_registration_path %></li>
