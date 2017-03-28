@@ -1,7 +1,7 @@
 ActiveAdmin.register Project do
   permit_params :name, :content, :price, :image
 
-  show do |_t|
+  show do |t|
     attributes_table do
       row :name
       row :content
