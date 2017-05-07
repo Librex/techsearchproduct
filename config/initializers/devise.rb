@@ -1,6 +1,6 @@
 Devise.setup do |config|
-  config.secret_key = 'ccc7be244dd6a2f18363571f0629bfa54fefec43d33a4e89598cbe64c093c56ba6e641353a130a801bc768a4861237efd9c583656e90c950970b2709cd2df98a'
-  config.mailer_sender = 'noreply@librex.co.jp'
+  config.secret_key = '9145b36e3d710f11312bb79b37684e45907029c322974fbe3e42ca9cf41af9e1e045b88a8b96bd93bd5a957f53046341e72a06007779ed5990be8d19408b74dd'
+  config.mailer_sender = 'noreply@wiredgate.co.jp'
 
   require 'devise/orm/active_record'
 
